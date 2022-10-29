@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --respawn --transpile-only src/app.ts"
+    "start": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.7",
     "morgan": "^1.10.0",
+    "standard-version": "^9.5.0",
     "typescript": "^4.8.4"
   },
   "dependencies": {
