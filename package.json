@@ -1,0 +1,54 @@
+{
+  "name": "newappnic-back",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node-dev --respawn --transpile-only src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kratso/newappnic-back.git"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "typescript",
+    "mongodb"
+  ],
+  "author": "Kratsaj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kratso/newappnic-back/issues"
+  },
+  "homepage": "https://github.com/Kratso/newappnic-back#readme",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/config": "^3.3.0",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/lodash": "^4.14.186",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.11.7",
+    "morgan": "^1.10.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@typegoose/typegoose": "^9.12.1",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.8",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.7.0",
+    "redis": "^4.3.1",
+    "ts-node-dev": "^2.0.0",
+    "zod": "^3.19.1"
+  }
+}
