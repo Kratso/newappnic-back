@@ -7,7 +7,8 @@ import cookieParser from 'cookie-parser';
 import dbConnection from './utils/db-connection';
 import userRouter from './routes/user.route';
 import authRouter from './routes/auth.route';
-
+import viajeRouter from './routes/viaje.route';
+import conceptoRouter from './routes/concepto.route';
 
 const app = express();
 
@@ -33,6 +34,8 @@ app.use(
 // Routing
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/viaje', viajeRouter);
+app.use('/api/conceptos', conceptoRouter)
 
 // Testing
 app.get('/healthChecker', (req: Request, res: Response, next: NextFunction) => {
