@@ -9,6 +9,8 @@ import Viaje from "../models/viaje.model";
 import AppError from "../utils/appError";
 import { findAllViajes, findViajeById } from "../services/viaje.service";
 import mongoose from "mongoose";
+import userModel from "../models/user.model";
+import { findUserById } from "../services/user.service";
 
 export const createViajeHandler = async (
   req: Request<{}, {}, createViajeInput>,
@@ -91,7 +93,8 @@ export const fetchViajesHandler = async (
   next: NextFunction
 ) => {
   try {
-    const viajes = await findAllViajes();
+    let viajes = await findAllViajes();
+    
     console.log(mongoose.models);
     res.status(200).json({
       status: "success",
