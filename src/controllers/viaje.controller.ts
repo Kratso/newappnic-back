@@ -108,7 +108,7 @@ export const fetchViajesHandler = async (
   }
 };
 
-export const fetchViajeById = async (
+export const fetchViajeByIdHandler = async (
   req: Request,
   res: Response,
   next: NextFunction

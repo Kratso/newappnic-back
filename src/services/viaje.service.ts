@@ -6,5 +6,5 @@ export const findAllViajes = async () => {
 }
 
 export const findViajeById = async (id: Types.ObjectId) => {
-    return Viaje.find({id});
+    return Viaje.find({id}).populate('participantes').populate('conceptos');
 }
