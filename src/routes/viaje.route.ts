@@ -1,11 +1,11 @@
 import {Router} from 'express';
 import { createViajeHandler, deleteViajeHandler, updateViajeHandler, fetchViajesHandler } from '../controllers/viaje.controller';
 import { requireUser } from '../middleware/require-user';
-import { restrictTo } from '../middleware/restrict-to';
+import { deserializeUser } from '../middleware/deserialize-user';
 
 const router = Router();
 
-// router.use(deserializeUser, requireUser);
+router.use(deserializeUser, requireUser);
 
 router.post("/create", createViajeHandler);
 
