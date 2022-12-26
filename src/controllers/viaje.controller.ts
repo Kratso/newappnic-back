@@ -11,6 +11,7 @@ import { findAllViajes, findViajeById } from "../services/viaje.service";
 import mongoose from "mongoose";
 import userModel from "../models/user.model";
 import { findUserById } from "../services/user.service";
+import Concepto from "../models/concepto.model";
 
 export const createViajeHandler = async (
   req: Request<{}, {}, createViajeInput>,
@@ -81,6 +82,12 @@ export const deleteViajeHandler = async (
 
     await Viaje.findByIdAndDelete(_id).exec();
 
+    // drop all conceptos from viaje
+    await Concepto.updateMany(
+      { viaje: _id },
+      { $pull: { viajes: _id } }
+    ).exec();
+
     res.status(202);
   } catch (err) {
     next(err);
@@ -95,7 +102,7 @@ export const fetchViajesHandler = async (
   try {
     let viajes = await findAllViajes();
     
-    console.log(mongoose.models);
+    viajes.forEach(a=> a.conceptos.forEach((b: any) => console.log(b.participantes)));
     res.status(200).json({
       status: "success",
       result: viajes.length,

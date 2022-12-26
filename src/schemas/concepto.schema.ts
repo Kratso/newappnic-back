@@ -9,7 +9,7 @@ const conceptoSchema = new Schema({
   },
   participantes: [
     {
-      user: {
+      usuario: {
         type: Schema.Types.ObjectId,
         ref: "User",
       },
