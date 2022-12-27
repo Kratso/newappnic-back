@@ -87,14 +87,10 @@ export const fetchConceptosFromViajeHandler = async (
 ) => {
   try {
     const {viajeId} = req.params
-
-    console.log(viajeId)
   
     const id = new mongoose.Types.ObjectId(viajeId);
     
     const conceptos = await findAllConceptosFromViaje(id);
-
-    console.log(conceptos, id)
 
     res.status(200).json({
       status: 'success',
