@@ -14,6 +14,7 @@ export const createUserSchema = object({
     path: ['passwordConfirm'],
     message: 'Passwords do not match',
   }),
+  phone: string({ required_error: 'Phone is required' }),
 });
 
 export const loginUserSchema = object({
