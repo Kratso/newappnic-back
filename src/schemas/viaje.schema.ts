@@ -6,6 +6,7 @@ const viajeSchema = new Schema({
     end_date: Date,
     participantes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     conceptos: [{type: Schema.Types.ObjectId, ref: 'concepto'}],
+    contable: {type: Schema.Types.ObjectId, ref: 'User'},
 })
 
 interface createViajeInput {
@@ -14,6 +15,7 @@ interface createViajeInput {
     end_date: Date,
     participantes: Types.ObjectId[],
     conceptos: Types.ObjectId[],
+    contable: Types.ObjectId,
 }
 
 interface updateViajeInput {
@@ -23,6 +25,7 @@ interface updateViajeInput {
     end_date: Date,
     participantes: Types.ObjectId[],
     conceptos: Types.ObjectId[],
+    contable: Types.ObjectId,
 }
 
 interface deleteViajeInput {

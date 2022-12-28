@@ -25,6 +25,8 @@ export const createViajeHandler = async (
 
     await viaje.populate("participantes");
     await viaje.populate("conceptos");
+    await viaje.populate("contable");
+
     await viaje.save();
 
     res.status(201).json({
@@ -44,7 +46,7 @@ export const updateViajeHandler = async (
   next: NextFunction
 ) => {
   try {
-    const { _id, destino, participantes, conceptos, start_date, end_date } =
+    const { _id, destino, participantes, conceptos, start_date, end_date, contable } =
       req.body;
     const viaje = await Viaje.findById(_id).exec();
     if (!viaje) {
@@ -56,9 +58,11 @@ export const updateViajeHandler = async (
     viaje.conceptos = conceptos;
     viaje.start_date = start_date;
     viaje.end_date = end_date;
+    viaje.contable = contable;
 
     await viaje.populate("participantes");
     await viaje.populate("conceptos");
+    await viaje.populate("contable");
     await viaje.save();
 
     res.status(201).json({

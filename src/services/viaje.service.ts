@@ -13,9 +13,11 @@ export const findAllViajes = async () => {
         path: 'participantes.usuario',
         model: 'User'
       }]
-    }).exec();
+    })
+    .populate('contable')
+    .exec();
 }
 
 export const findViajeById = async (id: Types.ObjectId) => {
-    return Viaje.find({id}).populate('participantes').populate('conceptos');
+    return Viaje.find({id}).populate('participantes').populate('conceptos').populate('contable').exec();
 }
