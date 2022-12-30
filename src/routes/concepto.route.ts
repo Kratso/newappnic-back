@@ -1,7 +1,14 @@
-import {Router} from 'express';
-import { createConceptoHandler, updateConceptoHandler, deleteConceptoHandler, fetchConceptosFromViajeHandler } from '../controllers/concepto.controller';
-import { deserializeUser } from '../middleware/deserialize-user';
-import { requireUser } from '../middleware/require-user';
+import { Router } from "express";
+import {
+  createConceptoHandler,
+  updateConceptoHandler,
+  deleteConceptoHandler,
+  fetchConceptosFromViajeHandler,
+  fetchConceptosGroupedByViajeHandler,
+  fetchConceptosGroupedByCategoriaHandler,
+} from "../controllers/concepto.controller";
+import { deserializeUser } from "../middleware/deserialize-user";
+import { requireUser } from "../middleware/require-user";
 
 const router = Router();
 
@@ -15,4 +22,8 @@ router.post("/delete", deleteConceptoHandler);
 
 router.get("/all/:viajeId", fetchConceptosFromViajeHandler);
 
-export default router ;
+router.get("/all/viaje", fetchConceptosGroupedByViajeHandler);
+
+router.get("/all/categoria", fetchConceptosGroupedByCategoriaHandler);
+
+export default router;

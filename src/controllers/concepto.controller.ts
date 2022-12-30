@@ -7,7 +7,10 @@ import {
 } from "../schemas/concepto.schema";
 import Concepto from "../models/concepto.model";
 import AppError from "../utils/appError";
-import { findAllConceptosFromViaje } from "../services/concepto.service";
+import {
+  findAllConceptosFromViaje,
+  findAllConceptosGroupedByViaje,
+} from "../services/concepto.service";
 import mongoose from "mongoose";
 import Viaje from "../models/viaje.model";
 
@@ -17,22 +20,24 @@ export const createConceptoHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const concepto = new Concepto(req.body);
 
     await concepto.populate("pagador");
-    await concepto.populate("viaje");    
+    await concepto.populate("viaje");
     await concepto.populate("participantes.usuario");
     await concepto.save();
 
-    Viaje.findByIdAndUpdate(concepto.viaje, {$push: {conceptos: concepto._id}}).exec()
+    Viaje.findByIdAndUpdate(concepto.viaje, {
+      $push: { conceptos: concepto._id },
+    }).exec();
 
     res.status(201).json({
-      status: 'success',
+      status: "success",
       data: {
-          concepto,
+        concepto,
       },
-  });
+    });
   } catch (err: any) {
     next(err);
   }
@@ -44,18 +49,20 @@ export const updateConceptoHandler = async (
   next: NextFunction
 ) => {
   try {
-    const {_id, ...rest} = req.body;
-    const concepto = await Concepto.findByIdAndUpdate(_id, rest, {new: true}).exec();
+    const { _id, ...rest } = req.body;
+    const concepto = await Concepto.findByIdAndUpdate(_id, rest, {
+      new: true,
+    }).exec();
     //populate concepto
     await concepto?.populate("pagador");
     await concepto?.populate("viaje");
 
     res.status(200).json({
-      status: 'success',
+      status: "success",
       data: {
-          concepto,
+        concepto,
       },
-  });
+    });
   } catch (err: any) {
     next(err);
   }
@@ -67,17 +74,18 @@ export const deleteConceptoHandler = async (
   next: NextFunction
 ) => {
   try {
-    const {_id} = req.body;
+    const { _id } = req.body;
     const concepto = await Concepto.findById(_id).exec();
-    await Viaje.findByIdAndUpdate(concepto?.viaje, {$pull: {conceptos: _id}}).exec()
+    await Viaje.findByIdAndUpdate(concepto?.viaje, {
+      $pull: { conceptos: _id },
+    }).exec();
 
-    await Concepto.findByIdAndDelete(_id).exec()
-
+    await Concepto.findByIdAndDelete(_id).exec();
 
     res.status(202);
-} catch(err) {
+  } catch (err) {
     next(err);
-}
+  }
 };
 
 export const fetchConceptosFromViajeHandler = async (
@@ -86,21 +94,60 @@ export const fetchConceptosFromViajeHandler = async (
   next: NextFunction
 ) => {
   try {
-    const {viajeId} = req.params
-  
+    const { viajeId } = req.params;
+
     const id = new mongoose.Types.ObjectId(viajeId);
-    
+
     const conceptos = await findAllConceptosFromViaje(id);
 
     res.status(200).json({
-      status: 'success',
+      status: "success",
       result: conceptos.length,
       data: {
-        conceptos
+        conceptos,
       },
-    })
-  } catch(err: any) {
+    });
+  } catch (err: any) {
     next(err);
-  } 
-  
+  }
+};
+
+export const fetchConceptosGroupedByViajeHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const conceptos = await findAllConceptosGroupedByViaje();
+
+    res.status(200).json({
+      status: "success",
+      result: Object.keys(conceptos).length,
+      data: {
+        conceptos,
+      },
+    });
+  } catch (err: any) {
+    next(err);
+  }
+};
+
+export const fetchConceptosGroupedByCategoriaHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const conceptos = await findAllConceptosGroupedByViaje();
+
+    res.status(200).json({
+      status: "success",
+      result: Object.keys(conceptos).length,
+      data: {
+        conceptos,
+      },
+    });
+  } catch (err: any) {
+    next(err);
+  }
 };

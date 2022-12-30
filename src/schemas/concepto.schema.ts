@@ -1,4 +1,5 @@
 import { Schema, ObjectId, Types } from "mongoose";
+import { string } from "zod";
 
 const conceptoSchema = new Schema({
   titulo: String,
@@ -16,6 +17,7 @@ const conceptoSchema = new Schema({
       pagado: Boolean,
     },
   ],
+  categoria: String,
   unidades: Number,
   precio: Number,
   viaje: {
@@ -31,6 +33,7 @@ interface createConceptoInput {
     participantes: Types.ObjectId[],
     unidades: Number,
     precio: Number,
+    categoria: String,
     viaje: Types.ObjectId,
 }
 
@@ -42,6 +45,7 @@ interface updateConceptoInput {
     participantes: Types.ObjectId[],
     unidades: Number,
     precio: Number,
+    categoria: String,
     viaje: Types.ObjectId,
 }
 
