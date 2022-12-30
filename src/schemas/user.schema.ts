@@ -6,6 +6,7 @@ export const createUserSchema = object({
     email: string({ required_error: 'Email is required' }).email(
       'Invalid email'
     ),
+    phone: string({ required_error: 'Phone is required' }),
     password: string({ required_error: 'Password is required' })
       .min(8, 'Password must be more than 8 characters')
       .max(32, 'Password must be less than 32 characters'),
@@ -14,7 +15,6 @@ export const createUserSchema = object({
     path: ['passwordConfirm'],
     message: 'Passwords do not match',
   }),
-  phone: string({ required_error: 'Phone is required' }),
 });
 
 export const loginUserSchema = object({
