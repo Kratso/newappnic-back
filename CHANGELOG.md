@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Kratso/newappnic-back/compare/v0.1.3...v0.1.4) (2023-03-15)
+
+
+### Features
+
+* 🎸 added categoria to concepto and new routes ([44f1327](https://github.com/Kratso/newappnic-back/commit/44f13277a82d8d2423fd5feda9f84fdc44dbcde0))
+* 🎸 added contable to viaje ([486c2db](https://github.com/Kratso/newappnic-back/commit/486c2db8a6a01c9e795addf475f2100526697daa))
+* 🎸 added phone to user ([c35cc4b](https://github.com/Kratso/newappnic-back/commit/c35cc4bf93916c79d773bcea7c181099197c31cd))
+* 🎸 cors open to back ([7d5dceb](https://github.com/Kratso/newappnic-back/commit/7d5dcebdd5bbc521bc98bf883347a388fd7c9774))
+* 🎸 generic entry point ([76679ef](https://github.com/Kratso/newappnic-back/commit/76679ef49e018bee034d1a84d4c8fc4af4a89d77))
+* 🎸 incremented bodyparser max length ([0fc6834](https://github.com/Kratso/newappnic-back/commit/0fc683432677bec3fa6c3077cab82635be274d67))
+
+
+### Bug Fixes
+
+* corrected populating participantes from concepto ([be16f40](https://github.com/Kratso/newappnic-back/commit/be16f40c57bc5acf237daae9b1a545ba1d08fb8f))
+
 ### [0.1.3](https://github.com/Kratso/newappnic-back/compare/v0.1.2...v0.1.3) (2022-12-26)
 
 
