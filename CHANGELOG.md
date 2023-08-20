@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Kratso/newappnic-back/compare/v0.1.4...v0.1.5) (2023-08-20)
+
+
+### Features
+
+* 🎸 added divisa to concepto ([247621b](https://github.com/Kratso/newappnic-back/commit/247621be977a9ecd215aab10bfad7e6951d18d88))
+* 🎸 added restore password ([681ebdb](https://github.com/Kratso/newappnic-back/commit/681ebdb8933d3d806c007cc33e22f014033ddbc2))
+
 ### [0.1.4](https://github.com/Kratso/newappnic-back/compare/v0.1.3...v0.1.4) (2023-03-15)
 
 
