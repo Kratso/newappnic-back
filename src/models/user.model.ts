@@ -39,6 +39,12 @@ export class User {
   @prop({ required: true })
   phone: string;
 
+  @prop({ required: false })
+  resetToken: string;
+
+  @prop({ required: false })
+  resetTokenExpires: number;
+
   // Instance method to check if passwords match
   async comparePasswords(hashedPassword: string, candidatePassword: string) {
     return await bcrypt.compare(candidatePassword, hashedPassword);
