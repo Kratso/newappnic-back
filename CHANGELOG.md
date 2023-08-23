@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/Kratso/newappnic-back/compare/v0.1.5...v0.1.6) (2023-08-23)
+
+
+### Features
+
+* 🎸 added discord incorporation ([2984eac](https://github.com/Kratso/newappnic-back/commit/2984eacc9d5ed2f0216e26511ec08bc5e161bf0c))
+
 ### [0.1.5](https://github.com/Kratso/newappnic-back/compare/v0.1.4...v0.1.5) (2023-08-20)
 
 
