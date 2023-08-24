@@ -16,19 +16,19 @@ export const discordService = {
       console.log(`Logged in as ${client?.user?.tag}!`);
     });
 
-    cron.schedule("0 0 */8 * * * ", async () => {
-      // get all viajes from db
-      const viajes = await Viaje.find({})
-        .populate("participantes")
-        .populate("conceptos")
-        .populate("contable")
-        .exec();
+    // get all viajes from db
+    const viajes = await Viaje.find({})
+      .populate("participantes")
+      .populate("conceptos")
+      .populate("contable")
+      .exec();
 
-      // check if theirs any active viaje, active being that the viaje has not ended yet
-      const activeViajes = viajes.filter(
-        (viaje) => (viaje?.end_date as Date) > new Date()
-      );
+    // check if theirs any active viaje, active being that the viaje has not ended yet
+    const activeViajes = viajes.filter(
+      (viaje) => (viaje?.end_date as Date) > new Date() && (viaje?.start_date as Date) < new Date()
+    );
 
+    cron.schedule(activeViajes.length > 0 ? "0 0 */12 * * * " : "0 0 22 * * *", async () => {
       // calculate the standing balance, separated by currency, of every user in every active viaje
       const balances = activeViajes.map((viaje) => {
         const participantes = viaje.participantes;
@@ -95,7 +95,6 @@ export const discordService = {
         return { viaje: viaje.destino, participantesBalances };
       });
 
-
       let fieldsDeudas = [];
 
       balances.forEach((viaje) => {
@@ -126,9 +125,8 @@ export const discordService = {
             iconURL: "https://i.imgur.com/lk2wCDS.png",
           });
 
-          channel.send({ embeds: [viajeEmbed] });
+        channel.send({ embeds: [viajeEmbed] });
       });
-
     });
 
     client.login(process.env.DISCORD_TOKEN);
