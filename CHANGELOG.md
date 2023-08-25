@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/Kratso/newappnic-back/compare/v0.1.6...v0.1.7) (2023-08-25)
+
+
+### Features
+
+* 🎸 fixed discord cron and added logger ([e4b0e0c](https://github.com/Kratso/newappnic-back/commit/e4b0e0c92a1a5559dd50a129b08586865cbd271b))
+
 ### [0.1.6](https://github.com/Kratso/newappnic-back/compare/v0.1.5...v0.1.6) (2023-08-23)
 
 
