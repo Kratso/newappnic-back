@@ -19,7 +19,6 @@ export const createViajeHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log(mongoose.models);
 
     const viaje = new Viaje(req.body);
 

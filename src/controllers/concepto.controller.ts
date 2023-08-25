@@ -20,7 +20,6 @@ export const createConceptoHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body);
     const concepto = new Concepto(req.body);
 
     await concepto.populate("pagador");
