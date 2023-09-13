@@ -141,7 +141,7 @@ export const discordService : {
             .setDescription(
               "Para más información, visita la web http://travel.pibardos.club"
             )
-            .setThumbnail("https://i.imgur.com/lk2wCDS.png")
+            .setThumbnail("https://i.imgur.com/xLAe0ZT.png")
             .addFields(...fieldsDeudas)
             .setImage("https://i.imgur.com/lyNs02i.png")
             .setTimestamp()
