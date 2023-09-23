@@ -7,6 +7,11 @@ const viajeSchema = new Schema({
     participantes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     conceptos: [{type: Schema.Types.ObjectId, ref: 'concepto'}],
     contable: {type: Schema.Types.ObjectId, ref: 'User'},
+    timers: [{
+        name: String,
+        date: Date,
+        isStart: Boolean,
+    }],
 })
 
 interface createViajeInput {
